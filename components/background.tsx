@@ -43,8 +43,18 @@ const VideoWithPlaceholder = ({
         setVideoLoaded(true)
       }
 
+      const handleEnded = () => {
+        if (video) {
+          video.currentTime = 0
+          video.play().catch((error) => {
+            console.error("Error replaying video:", error)
+          })
+        }
+      }
+
       video.addEventListener("loadeddata", handleLoadedData)
       video.addEventListener("canplay", handleCanPlay)
+      video.addEventListener("ended", handleEnded)
       video.load()
 
       if (video.readyState >= 2) {
@@ -54,13 +64,16 @@ const VideoWithPlaceholder = ({
       return () => {
         video.removeEventListener("loadeddata", handleLoadedData)
         video.removeEventListener("canplay", handleCanPlay)
+        video.removeEventListener("ended", handleEnded)
       }
     }
   }, [src])
 
   useEffect(() => {
     if (videoRef.current && videoLoaded) {
-      videoRef.current.play()
+      videoRef.current.play().catch((error) => {
+        console.error("Error playing video:", error)
+      })
     }
   }, [videoLoaded])
 
