@@ -151,7 +151,7 @@ export const Newsletter = () => {
                   className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-pretty italic italic"
                   style={{ color: "#121212" }}
                 >
-                  The first membership platform that actually connects you to the best people.
+                  The first membership community that actually connects you to the best people.
                 </motion.p>
               </div>
             </motion.div>
