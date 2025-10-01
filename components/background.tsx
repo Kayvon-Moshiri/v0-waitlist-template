@@ -117,7 +117,9 @@ const SplineEmbed = ({
   src: string
   className?: string
 }) => {
-  return <iframe src={src} className={className} style={{ border: "none" }} title="Spline 3D Scene" />
+  return (
+    <iframe src={src} className={className} style={{ border: "none", transform: "scale(2)" }} title="Spline 3D Scene" />
+  )
 }
 
 export const Background = ({
