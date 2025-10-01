@@ -1,6 +1,5 @@
-import { InstagramLogoIcon } from "@radix-ui/react-icons"
+import { InstagramLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 import { buttonVariants } from "./ui/button"
-import XLogoIcon from "./icons/x"
 import { socialLinks } from "@/lib/constants"
 import Link from "next/link"
 
@@ -13,8 +12,8 @@ export const Footer = () => {
       <Link target="_blank" className={buttonVariants({ size: "icon-xl" })} href={socialLinks.instagram}>
         <InstagramLogoIcon className="size-6" />
       </Link>
-      <Link target="_blank" className={buttonVariants({ size: "icon-xl" })} href={socialLinks.x}>
-        <XLogoIcon className="size-6" />
+      <Link target="_blank" className={buttonVariants({ size: "icon-xl" })} href={socialLinks.linkedin}>
+        <LinkedInLogoIcon className="size-6" />
       </Link>
     </div>
   )
