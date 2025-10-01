@@ -5,16 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-colors-and-shadows duration-300 ease-out focus-visible:outline-none focus-visible:border-border/15 focus-visible:ring-1 focus-visible:ring-black/70 focus-visible:ring-offset-4 focus-visible:ring-offset-white/20 focus-visible:shadow-button-hover disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-6 [&_svg]:shrink-0 disabled:cursor-not-allowed",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-colors-and-shadows duration-300 ease-out focus-visible:outline-none focus-visible:border-border/15 focus-visible:ring-1 focus-visible:ring-white/70 focus-visible:ring-offset-4 focus-visible:ring-offset-white/20 focus-visible:shadow-button-hover disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-6 [&_svg]:shrink-0 disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
         default:
-          "border border-black/50 hover:border-black/70 bg-black/20 focus-visible:bg-black/30 hover:bg-black/30 backdrop-blur-sm text-[#1a1a1a] ring-1 ring-offset-white/10 ring-black/10 ring-offset-2 hover:ring-black/15 hover:ring-offset-4 hover:ring-offset-white/20 shadow-button hover:shadow-button-hover",
+          "border border-white/50 hover:border-white/70 bg-white/10 focus-visible:bg-white/20 hover:bg-white/20 backdrop-blur-sm text-white ring-1 ring-offset-white/10 ring-white/10 ring-offset-2 hover:ring-white/15 hover:ring-offset-4 hover:ring-offset-white/20 shadow-button hover:shadow-button-hover",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         iconButton:
-          "border border-black/50 hover:border-black/70 bg-black/80 disabled:bg-black/40 hover:bg-black/90 backdrop-blur-sm disabled:text-white/50 text-white ring-1 ring-offset-transparent ring-transparent ring-offset-2 hover:ring-black/15 hover:ring-offset-4 hover:ring-offset-white/20 shadow-button hover:shadow-button-hover",
+          "border border-white/50 hover:border-white/70 bg-white/80 disabled:bg-white/40 hover:bg-white/90 backdrop-blur-sm disabled:text-black/50 text-black ring-1 ring-offset-transparent ring-transparent ring-offset-2 hover:ring-white/15 hover:ring-offset-4 hover:ring-offset-white/20 shadow-button hover:shadow-button-hover",
       },
       size: {
         sm: "h-8 px-3 text-xs",

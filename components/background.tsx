@@ -13,6 +13,10 @@ const isVideo = (extension: string): boolean => {
   return videoExtensions.includes(extension)
 }
 
+const isSplineUrl = (url: string): boolean => {
+  return url.includes("spline.design")
+}
+
 const VideoWithPlaceholder = ({
   src,
   className,
@@ -106,6 +110,16 @@ const VideoWithPlaceholder = ({
   )
 }
 
+const SplineEmbed = ({
+  src,
+  className,
+}: {
+  src: string
+  className?: string
+}) => {
+  return <iframe src={src} className={className} style={{ border: "none" }} title="Spline 3D Scene" />
+}
+
 export const Background = ({
   src,
   placeholder,
@@ -113,10 +127,15 @@ export const Background = ({
   src: string
   placeholder?: string
 }) => {
+  const isSpline = isSplineUrl(src)
   const extension = getFileExtension(src)
   const isVideoFile = isVideo(extension)
 
   const classNames = "absolute bg-background left-0 top-0 w-full h-full object-cover rounded-[42px] md:rounded-[72px]"
+
+  if (isSpline) {
+    return <SplineEmbed src={src} className={classNames} />
+  }
 
   if (isVideoFile) {
     return <VideoWithPlaceholder src={src} className={classNames} placeholder={placeholder} />

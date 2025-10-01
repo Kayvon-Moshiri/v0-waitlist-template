@@ -6,10 +6,7 @@ export default function Home() {
   return (
     <main className="p-inset h-[100dvh] w-full">
       <div className="relative h-full w-full">
-        <Background
-          src="https://nfaeixqn9xpifb1p.public.blob.vercel-storage.com/background%20image.mp4"
-          placeholder="/alt-placeholder.png"
-        />
+        <Background src="https://my.spline.design/retrofuturismbganimation-WOKX4Qnu4w7olgWN7S0plbWX/" />
         <Newsletter />
         <Footer />
       </div>

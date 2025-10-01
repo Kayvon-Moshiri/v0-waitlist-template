@@ -50,10 +50,7 @@ export const Newsletter = () => {
   return (
     <div className="flex overflow-hidden relative flex-col gap-2 justify-center items-center pt-3 w-full h-full short:lg:pt-3 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-2 lg:gap-4">
       <motion.div layout="position" transition={{ duration: DURATION, ease: EASE_OUT }}>
-        <h1
-          className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl lg:text-9xl"
-          style={{ color: "#121212" }}
-        >
+        <h1 className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl lg:text-9xl text-white">
           Ellie AI by Elevate
         </h1>
       </motion.div>
@@ -148,8 +145,7 @@ export const Newsletter = () => {
                     ease: EASE_OUT,
                     delay: DELAY,
                   }}
-                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-pretty italic italic"
-                  style={{ color: "#121212" }}
+                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-pretty italic italic text-white"
                 >
                   The first membership community that actually connects you to the best people.
                 </motion.p>
