@@ -1,57 +1,59 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
-import { Button, buttonVariants } from "./ui/button";
-import { FormNewsletter } from "./form-newsletter";
-import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { ArrowRightIcon, Cross1Icon } from "@radix-ui/react-icons";
-import { inputVariants } from "./ui/input";
-import { useIsV0 } from "@/lib/context";
+import type React from "react"
 
-const DURATION = 0.3;
-const DELAY = DURATION;
-const EASE_OUT = "easeOut";
-const EASE_OUT_OPACITY = [0.25, 0.46, 0.45, 0.94] as const;
+import { useEffect, useRef, useState } from "react"
+import { Button, buttonVariants } from "./ui/button"
+import { FormNewsletter } from "./form-newsletter"
+import { AnimatePresence, motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+import { ArrowRightIcon, Cross1Icon } from "@radix-ui/react-icons"
+import { inputVariants } from "./ui/input"
+import { useIsV0 } from "@/lib/context"
+
+const DURATION = 0.3
+const DELAY = DURATION
+const EASE_OUT = "easeOut"
+const EASE_OUT_OPACITY = [0.25, 0.46, 0.45, 0.94] as const
 const SPRING = {
   type: "spring" as const,
   stiffness: 60,
   damping: 10,
   mass: 0.8,
-};
+}
 
 export const Newsletter = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const isInitialRender = useRef(true);
+  const isInitialRender = useRef(true)
 
   useEffect(() => {
     return () => {
-      isInitialRender.current = false;
-    };
-  }, [isOpen]);
+      isInitialRender.current = false
+    }
+  }, [isOpen])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
 
   return (
-    <div className="flex overflow-hidden relative flex-col gap-4 justify-center items-center pt-10 w-full h-full short:lg:pt-10 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-4 lg:gap-8">
-      <motion.div
-        layout="position"
-        transition={{ duration: DURATION, ease: EASE_OUT }}
-      >
-        <h1 className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl text-foreground lg:text-9xl">
+    <div className="flex overflow-hidden relative flex-col gap-2 justify-center items-center pt-3 w-full h-full short:lg:pt-3 pb-footer-safe-area 2xl:pt-footer-safe-area px-sides short:lg:gap-2 lg:gap-4">
+      <motion.div layout="position" transition={{ duration: DURATION, ease: EASE_OUT }}>
+        <h1
+          className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl lg:text-9xl"
+          style={{ color: "#121212" }}
+        >
           Ellie AI by Elevate
         </h1>
       </motion.div>
@@ -80,7 +82,7 @@ export const Newsletter = () => {
                 exit: {
                   y: -150,
                   scale: 0.9,
-                  transition: { duration: DURATION, ease: EASE_OUT },
+                  transition: { duration: DURATION, ease: EASE_OUT_OPACITY },
                 },
               }}
             >
@@ -122,10 +124,7 @@ export const Newsletter = () => {
                       animate={{ opacity: 1 }}
                       exit={{
                         opacity: 0,
-                        transition: {
-                          duration: DURATION,
-                          ease: EASE_OUT_OPACITY,
-                        },
+                        transition: { duration: DURATION, ease: EASE_OUT_OPACITY },
                       }}
                       transition={{
                         duration: DURATION,
@@ -149,25 +148,17 @@ export const Newsletter = () => {
                     ease: EASE_OUT,
                     delay: DELAY,
                   }}
-                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-foreground text-pretty italic italic"
+                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-pretty italic italic"
+                  style={{ color: "#121212" }}
                 >
-                  The first membership platform that actually connects you to the best people.  
+                  The first membership platform that actually connects you to the best people.
                 </motion.p>
               </div>
             </motion.div>
           )}
 
-          <motion.div
-            layout="position"
-            transition={SPRING}
-            key="button"
-            className={isOpen ? "my-6" : "mt-6"}
-          >
-            <Button
-              className={cn("relative px-8")}
-              onClick={() => setIsOpen(!isOpen)}
-              shine={!isOpen}
-            >
+          <motion.div layout="position" transition={SPRING} key="button" className={isOpen ? "my-6" : "mt-6"}>
+            <Button className={cn("relative px-8")} onClick={() => setIsOpen(!isOpen)} shine={!isOpen}>
               <motion.span
                 animate={{ x: isOpen ? -16 : 0 }}
                 transition={{ duration: DURATION, ease: EASE_OUT }}
@@ -180,7 +171,7 @@ export const Newsletter = () => {
                 <motion.div
                   className={cn(
                     buttonVariants({ variant: "iconButton", size: "icon" }),
-                    "absolute -top-px -right-px aspect-square"
+                    "absolute -top-px -right-px aspect-square",
                   )}
                   initial={{ opacity: 0, scale: 0.8, rotate: -40 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -190,7 +181,7 @@ export const Newsletter = () => {
                     delay: DELAY,
                   }}
                 >
-                  <Cross1Icon className="size-5 text-primary-foreground" />
+                  <Cross1Icon className="size-5 text-input" />
                 </motion.div>
               )}
             </Button>
@@ -223,41 +214,24 @@ export const Newsletter = () => {
                   transition: { duration: DURATION, ease: EASE_OUT_OPACITY },
                 },
               }}
-              className="relative flex min-h-0 flex-shrink overflow-hidden text-sm md:text-base max-h-[calc(70dvh-var(--footer-safe-area))] flex-col gap-8 text-center backdrop-blur-xl text-balance border-2 border-border/50 bg-primary/20 max-w-3xl text-foreground rounded-3xl ring-1 ring-offset-primary/10 ring-border/10 ring-offset-2 shadow-button"
+              className="relative flex min-h-0 flex-shrink overflow-hidden text-sm md:text-base max-h-[calc(70dvh-var(--footer-safe-area))] flex-col gap-8 text-center backdrop-blur-xl text-balance border-2 border-black/50 bg-black/20 max-w-3xl rounded-3xl ring-1 ring-offset-white/10 ring-black/10 ring-offset-2 shadow-button"
             >
-              <article className="relative overflow-y-auto italic p-6 h-full [&_p]:my-4">
+              <article className="relative overflow-y-auto italic p-6 h-full [&_p]:my-4 text-white">
                 <p>
-                  &quot;We stand at the forefront of a new era, where creativity
-                  meets technology to redefine what&apos;s possible. Our mission
-                  is to empower individuals and businesses alike with
-                  groundbreaking solutions that inspire change and drive
-                  progress.
+                  We believe the shortest distance to possibility is a person, not a feed, not a funnel, but a
+                  conversation at the right moment with the right someone. Ellie is quiet technology for human
+                  connection. It favors fewer, better introductions; consent and respect over interruption; and
+                  serendipity that feels accidental but is carefully designed. Ellie meets people where they already
+                  are, no apps or clutter, preserving scarce attention so the important hellos get through.
                 </p>
                 <p>
-                  We stand at the forefront of a new era, where creativity meets
-                  technology to redefine what&apos;s possible. Our mission is to
-                  empower individuals and businesses alike with groundbreaking
-                  solutions that inspire change and drive progress.
+                  We choose depth over reach, because one great intro can change a career. Our interfaces are
+                  human-first, our outcomes transparent, and our follow-through accountable. We prize discretion, data
+                  minimization, and measurable wins, and we judge ourselves by introductions that become relationships.
                 </p>
                 <p>
-                  We believe in constant innovation, pushing boundaries to
-                  create products that are not just tools, but catalysts for
-                  transformation. We value simplicity, designing intuitive
-                  experiences that make complex tasks effortless and enjoyable.
-                  Our commitment to sustainability drives us to protect our
-                  planet while delivering exceptional value. We foster
-                  collaboration, building a community of thinkers, creators, and
-                  doers who share a vision for a better tomorrow.
-                </p>
-                <p>
-                  Our promise is to deliver cutting-edge technology that is
-                  accessible, reliable, and tailored to meet the needs of our
-                  users. We will challenge the status quo, embrace change, and
-                  lead the charge towards a brighter, more innovative future.
-                </p>
-                <p>
-                  Join us on this journey as we innovate, inspire, and ignite
-                  the spark of creativity in every corner of the globe.&quot;
+                  Ellie widens the circle and makes it easier to meet the person you were meant to meet, before, during,
+                  and after gatherings, turning chance into momentum for members, founders, and partners. Join us.
                 </p>
               </article>
             </motion.div>
@@ -265,11 +239,17 @@ export const Newsletter = () => {
         </AnimatePresenceGuard>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const AnimatePresenceGuard = ({ children }: { children: React.ReactNode }) => {
-  const isV0 = useIsV0();
+  const isV0 = useIsV0()
 
-  return isV0 ? <>{children}</> : <AnimatePresence mode="popLayout" propagate>{children}</AnimatePresence>;
-};
+  return isV0 ? (
+    <>{children}</>
+  ) : (
+    <AnimatePresence mode="popLayout" propagate>
+      {children}
+    </AnimatePresence>
+  )
+}
